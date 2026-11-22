@@ -1,0 +1,88 @@
+# Newcastle United – dashboard för Home Assistant (svenska)
+# Klistras in under Raw configuration editor i en ny, tom dashboard. Se README.sv.md.
+views:
+- max_columns: 3
+  path: nufc
+  sections:
+  - cards:
+    - heading: Nästa match
+      icon: mdi:soccer-field
+      type: heading
+    - type: custom:team-next-card
+      team: Newcastle United
+      league: eng.1
+      grid_options:
+        columns: full
+    - content: '{% set r = (state_attr(''sensor.newcastle_united'',''team_record'') or ''0-0-0'').split(''-'') %}**Säsongen i Premier League:** {{ r[0] }} vinster · {{ r[1] }} oavgjorda · {{ r[2] }} förluster'
+      grid_options:
+        columns: full
+      type: markdown
+    - type: custom:team-lineup-card
+      team: Newcastle United
+      league: eng.1
+      grid_options:
+        columns: full
+    type: grid
+  - cards:
+    - type: heading
+      heading: Matcher
+      icon: mdi:calendar
+    - type: custom:team-fixtures-card
+      team: Newcastle United
+      league: eng.1
+      title: ''
+      grid_options:
+        columns: full
+    type: grid
+  - type: grid
+    cards:
+    - type: heading
+      heading: Tabell
+      icon: mdi:format-list-numbered
+    - type: custom:team-table-card
+      team: Newcastle United
+      league: eng.1
+      title: ''
+      grid_options:
+        columns: full
+  - cards:
+    - heading: Nyheter
+      icon: mdi:newspaper-variant
+      type: heading
+    - entities:
+      - sensor.nufc_bbc
+      - sensor.nufc_chronicle
+      grid_options:
+        columns: full
+      new_pill_duration_hours: 12
+      open_behavior: latest
+      show_item_image: true
+      show_source: true
+      type: custom:rss-accordion
+      max_items: 12
+      max_items_per_entity: 6
+    type: grid
+  - cards:
+    - heading: Laget
+      icon: mdi:account-group
+      type: heading
+    - type: custom:team-squad-card
+      team: Newcastle United
+      league: eng.1
+      title: ''
+      grid_options:
+        columns: full
+    - type: markdown
+      text_only: true
+      grid_options:
+        columns: full
+      content: '<sub>Bakgrundsbild: St James'' Park, foto yellow book ltd, CC BY 2.0 (Wikimedia Commons).</sub>'
+    type: grid
+  title: Newcastle United
+  type: sections
+  background:
+    image: https://commons.wikimedia.org/wiki/Special:FilePath/St_James_Park_Newcastle_south_west_corner.jpg
+    size: cover
+    alignment: center
+    attachment: fixed
+    opacity: 45

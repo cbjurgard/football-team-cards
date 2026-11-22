@@ -1,0 +1,24 @@
+# Football Team Cards – a page for any team. Change team and league, then paste
+# into the Raw configuration editor of a new, empty dashboard.
+views:
+- title: Real Madrid
+  path: team
+  max_columns: 3
+  sections:
+  - type: grid
+    cards:
+    - {type: heading, heading: Next match, icon: mdi:soccer-field}
+    - {type: custom:team-next-card, team: Real Madrid, league: esp.1, grid_options: {columns: full}}
+    - {type: custom:team-lineup-card, team: Real Madrid, league: esp.1, grid_options: {columns: full}}
+  - type: grid
+    cards:
+    - {type: heading, heading: Matches, icon: mdi:calendar}
+    - {type: custom:team-fixtures-card, team: Real Madrid, league: esp.1, title: '', grid_options: {columns: full}}
+  - type: grid
+    cards:
+    - {type: heading, heading: Table, icon: mdi:format-list-numbered}
+    - {type: custom:team-table-card, team: Real Madrid, league: esp.1, title: '', grid_options: {columns: full}}
+  - type: grid
+    cards:
+    - {type: heading, heading: Squad, icon: mdi:account-group}
+    - {type: custom:team-squad-card, team: Real Madrid, league: esp.1, title: '', grid_options: {columns: full}}
